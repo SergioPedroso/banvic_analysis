@@ -8,8 +8,7 @@ colaboradores as (
 
     SELECT
         CAST(cod_colaborador AS int) AS colaborador_id,
-        primeiro_nome,
-        ultimo_nome,
+        CONCAT(primeiro_nome,' ',ultimo_nome) AS nome_colaborador,
         data_nascimento
         
     FROM source

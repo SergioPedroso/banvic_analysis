@@ -13,8 +13,8 @@ contas as (
         CAST(cod_colaborador AS int) AS colaborador_id,
         tipo_conta,
         data_abertura,
-        {{ to_centavos('saldo_total', 4) }} AS saldo_total_1e4,
-        {{ to_centavos('saldo_disponivel', 4) }} AS saldo_disponivel_1e4,
+        {{ reais_to_centavos('saldo_total', 10000) }} AS saldo_total_1e4,
+        {{ reais_to_centavos('saldo_disponivel', 10000) }} AS saldo_disponivel_1e4,
         data_ultimo_lancamento
         
     FROM source

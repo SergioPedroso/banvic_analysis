@@ -1,0 +1,23 @@
+macros:
+  - name: centavos_to_reais
+    description: Macro that converts cents to reais and rounds the value using the provided number of decimal places, or two decimal places if none is provided.
+    arguments:
+      - name: column_name
+        type: string
+        description: Name of the column to be converted.
+      - name: factor
+        type: integer
+        description: Division factor to convert cents into currency; default = 100.
+      - name: decimals
+        type: integer
+        description: Number of decimal places; default = 2.
+
+  - name: reais_to_centavos
+    description: Macro that converts reais to cents and rounds the value using the provided number of decimal places, or two decimal places if none is provided.
+    arguments:
+      - name: column_name
+        type: string
+        description: Name of the column to be converted.
+      - name: factor
+        type: integer
+        description: Multiplication factor to convert currency into cents; default = 100.

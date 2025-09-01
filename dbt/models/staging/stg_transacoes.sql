@@ -11,7 +11,7 @@ transacoes as (
         CAST(num_conta AS int) AS conta_id,
         data_transacao,
         nome_transacao AS tipo_transacao,
-        {{ to_centavos('valor_transacao', 4) }} AS valor_transacao_1e4
+        {{ reais_to_centavos('valor_transacao', 10000) }} AS valor_transacao_1e4
 
     FROM source
     
