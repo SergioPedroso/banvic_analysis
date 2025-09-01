@@ -8,8 +8,7 @@ clientes AS(
 
     SELECT
         CAST(cod_cliente AS int) AS cliente_id,
-        primeiro_nome,
-        ultimo_nome,
+        CONCAT(primeiro_nome,' ',ultimo_nome) AS nome_cliente,
         email,
         tipo_cliente,
         data_inclusao,

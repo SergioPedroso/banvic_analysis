@@ -6,32 +6,32 @@ sources:
     schema: dbt_banvic
     tables:
       - name: agencias
-        description: "Cadastro de agências."
+        description: Branch registry.
         columns:
           - name: cod_agencia
-            description: "Identificador único da agência."
+            description: Unique identifier of the branch.
             tests:
               - not_null
               - unique
 
       - name: clientes
-        description: "Cadastro de clientes."
+        description: Customer registry.
         columns:
           - name: cod_cliente
-            description: "Identificador único do cliente."
+            description: Unique identifier of the customer.
             tests: 
               - not_null
               - unique
 
       - name: colaborador_agencia
-        description: "Relação colaborador ↔ agência (lotação)."
+        description: Employee to branch key relationship.
         columns:
           - name: cod_colaborador
-            description: "FK para colaboradores."
+            description: FK to employees.
             tests: 
               - not_null
           - name: cod_agencia
-            description: "FK para agencias."
+            description: FK to branches.
             tests: 
               - not_null
         tests:
@@ -39,61 +39,61 @@ sources:
               combination_of_columns: [cod_colaborador, cod_agencia]
               
       - name: colaboradores
-        description: "Cadastro de colaboradores."
+        description: Employee registry.
         columns:
           - name: cod_colaborador
-            description: "Identificador único do colaborador."
+            description: Unique identifier of the employee.
             tests:
               - not_null
               - unique
 
       - name: contas
-        description: "Contas de clientes."
+        description: Customer accounts.
         columns:
-          - name: cod_conta
-            description: "Identificador único da conta."
+          - name: num_conta
+            description: Unique identifier of the account.
             tests: 
               - not_null
               - unique
           - name: cod_cliente
-            description: "FK para clientes."
+            description: FK to customers.
             tests: 
               - not_null
           - name: cod_agencia
-            description: "FK para agencia."
+            description: FK to branch.
             tests: 
               - not_null
           - name: cod_colaborador
-            description: "FK para colaborador."
+            description: FK to employee.
             tests: 
               - not_null
 
       - name: propostas_credito
-        description: "Propostas de crédito."
+        description: Credit proposals.
         columns:
           - name: cod_proposta
-            description: "Identificador único da proposta."
+            description: Unique identifier of the proposal.
             tests: 
               - not_null
               - unique
           - name: cod_cliente
-            description: "FK para clientes."
+            description: FK to customers.
             tests: 
               - not_null
           - name: cod_colaborador
-            description: "FK para colaborador."
+            description: FK to employee.
             tests: 
               - not_null
 
       - name: transacoes
-        description: "Transações financeiras."
+        description: Financial transactions.
         columns:
           - name: cod_transacao
-            description: "Identificador único da transação."
+            description: Unique identifier of the transaction.
             tests: 
               - not_null
               - unique
           - name: num_conta
-            description: "FK para contas."
+            description: FK to accounts.
             tests: 
               - not_null
