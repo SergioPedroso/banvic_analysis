@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: dim_agencias
+    description: This table contains the bank branches' information.
+
+    columns:
+      - name: agencia_id
+        description: Unique branch identifier.
+        tests:
+          - unique
+          - not_null
+
+      - name: nome
+        description: Branch name.
+        tests:
+          - not_null
+
+      - name: cidade
+        description: City where the branch is located.
+        tests:
+          - not_null
+
+      - name: data_abertura
+        description: Branch opening date.
+        tests:
+          - not_null

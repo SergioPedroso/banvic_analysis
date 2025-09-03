@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: fact_transacoes
+    description: Fact table of account transactions.
+
+    columns:
+      - name: transacao_id
+        description: Unique transaction identifier.
+        tests:
+          - unique
+          - not_null
+
+      - name: conta_id
+        description: Foreign key to account.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_contas')
+              field: conta_id
+
+      - name: date_id
+        description: Foreign key to date dimension (YYYYMMDD).
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_dates')
+              field: date_id
+
+      - name: tipo_transacao
+        description: Transaction type.
+        tests:
+          - not_null
+
+      - name: valor_transacao
+        description: Transaction amount.
+        tests:
+          - not_null

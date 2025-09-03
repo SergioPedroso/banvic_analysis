@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: dim_colaboradores
+    description: This table contains employees' information.
+
+    columns:
+      - name: colaborador_id
+        description: Unique employee identifier.
+        tests:
+          - unique
+          - not_null
+
+      - name: nome_colaborador
+        description: Employee full name.
+        tests:
+          - not_null
+
+      - name: data_nascimento
+        description: Employee date of birth.
+        tests:
+          - not_null

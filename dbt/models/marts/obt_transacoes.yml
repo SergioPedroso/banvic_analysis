@@ -1,0 +1,101 @@
+version: 2
+
+models:
+  - name: obt_transacoes
+    description: One Big Table joining transactions with accounts, customers, employees, branches and dates.
+
+    columns:
+      - name: transacao_id
+        description: Unique transaction identifier.
+        tests:
+          - unique
+          - not_null
+
+      - name: conta_id
+        description: Foreign key to account.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_contas')
+              field: conta_id
+
+      - name: cliente_id
+        description: Foreign key to customer.
+        tests:
+          - relationships:
+              to: ref('dim_clientes')
+              field: cliente_id
+
+      - name: agencia_id
+        description: Foreign key to branch.
+        tests:
+          - relationships:
+              to: ref('dim_agencias')
+              field: agencia_id
+
+      - name: colaborador_id
+        description: Foreign key to employee.
+        tests:
+          - relationships:
+              to: ref('dim_colaboradores')
+              field: colaborador_id
+
+      - name: date_id
+        description: Foreign key to date dimension (YYYYMMDD).
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_dates')
+              field: date_id
+
+      - name: tipo_transacao
+        description: Transaction type or category.
+        tests:
+          - not_null
+
+      - name: valor_transacao
+        description: Transaction amount in BRL.
+        tests:
+          - not_null
+
+      - name: tipo_conta
+        description: Account type.
+
+      - name: conta_data_abertura
+        description: Account opening date.
+
+      - name: saldo_total
+        description: Total balance amount.
+
+      - name: saldo_disponivel
+        description: Available balance amount.
+
+      - name: data_ultimo_lancamento
+        description: Timestamp of the last posting on the account.
+
+      - name: nome_cliente
+        description: Customer full name.
+
+      - name: email
+        description: Customer email address.
+
+      - name: cliente_data_inclusao
+        description: Customer inclusion date in the system.
+
+      - name: cliente_data_nascimento
+        description: Customer date of birth.
+
+      - name: nome_colaborador
+        description: Employee full name.
+
+      - name: colaborador_data_nascimento
+        description: Employee date of birth.
+
+      - name: nome_agencia
+        description: Branch name.
+
+      - name: agencia_cidade
+        description: City where the branch is located.
+
+      - name: agencia_data_abertura
+        description: Branch opening date.

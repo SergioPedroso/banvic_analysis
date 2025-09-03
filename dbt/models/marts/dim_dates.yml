@@ -40,3 +40,15 @@ models:
         description: Representation of year on format (yyyy/mm/dd).
         tests:
           - not_null
+      
+      - name: day_of_week_num
+        description: Representation of weekdays in numbers (1 = Sunday).
+        tests:
+          - not_null
+      
+      - name: week_day
+        description: Names of weekdays in PT-BR.
+        tests:
+          - not_null
+        
+

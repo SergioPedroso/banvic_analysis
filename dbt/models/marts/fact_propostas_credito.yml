@@ -1,0 +1,73 @@
+version: 2
+
+models:
+  - name: fact_propostas_credito
+    description: This table contains credit proposals with terms, amounts, and current status.
+
+    columns:
+      - name: proposta_id
+        description: Unique credit proposal identifier.
+        tests:
+          - unique
+          - not_null
+
+      - name: cliente_id
+        description: Foreign key to customer.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_clientes')
+              field: cliente_id
+
+      - name: colaborador_id
+        description: Foreign key to employee.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_colaboradores')
+              field: colaborador_id
+
+      - name: data_entrada_proposta
+        description: Proposal entry timestamp in UTC.
+        tests:
+          - not_null
+
+      - name: taxa_juros_mensal
+        description: Monthly interest rate in decimal form.
+        tests:
+          - not_null
+
+      - name: valor_proposta
+        description: Principal amount requested by the customer.
+        tests:
+          - not_null
+
+      - name: valor_financiamento
+        description: Contract base amount equal to principal plus initial charges.
+        tests:
+          - not_null
+
+      - name: valor_entrada
+        description: Initial charges or additions applied.
+        tests:
+          - not_null
+
+      - name: valor_prestacao
+        description: Installment amount.
+        tests:
+          - not_null
+
+      - name: quantidade_parcelas
+        description: Number of installments in the contract.
+        tests:
+          - not_null
+
+      - name: carencia
+        description: Grace period in months before amortization starts.
+        tests:
+          - not_null
+
+      - name: status_proposta
+        description: Current status of the credit proposal.
+        tests:
+          - not_null
