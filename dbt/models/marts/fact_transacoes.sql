@@ -3,11 +3,11 @@ WITH transacoes AS (
     SELECT
         transacao_id,
         conta_id,
-        data_transacao,
+        date_id,
         tipo_transacao,
-        {{ centavos_to_reais('valor_transacao_1e4', 10000, 4) }} AS valor_transacao
+        valor_transacao
     
-    FROM {{ ref('stg_transacoes') }}
+    FROM {{ ref('int_transacoes') }}
   
 )
 
