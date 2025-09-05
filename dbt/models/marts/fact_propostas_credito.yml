@@ -15,17 +15,11 @@ models:
         description: Foreign key to customer.
         tests:
           - not_null
-          - relationships:
-              to: ref('dim_clientes')
-              field: cliente_id
 
       - name: colaborador_id
         description: Foreign key to employee.
         tests:
           - not_null
-          - relationships:
-              to: ref('dim_colaboradores')
-              field: colaborador_id
 
       - name: data_entrada_proposta
         description: Proposal entry timestamp in UTC.

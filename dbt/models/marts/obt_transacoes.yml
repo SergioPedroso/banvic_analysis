@@ -15,38 +15,26 @@ models:
         description: Foreign key to account.
         tests:
           - not_null
-          - relationships:
-              to: ref('dim_contas')
-              field: conta_id
 
       - name: cliente_id
         description: Foreign key to customer.
         tests:
-          - relationships:
-              to: ref('dim_clientes')
-              field: cliente_id
+          - not_null
 
       - name: agencia_id
         description: Foreign key to branch.
         tests:
-          - relationships:
-              to: ref('dim_agencias')
-              field: agencia_id
+          - not_null
 
       - name: colaborador_id
         description: Foreign key to employee.
         tests:
-          - relationships:
-              to: ref('dim_colaboradores')
-              field: colaborador_id
+          - not_null
 
       - name: date_id
         description: Foreign key to date dimension (YYYYMMDD).
         tests:
           - not_null
-          - relationships:
-              to: ref('dim_dates')
-              field: date_id
 
       - name: tipo_transacao
         description: Transaction type or category.

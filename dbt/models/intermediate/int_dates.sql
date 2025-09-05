@@ -2,9 +2,9 @@ WITH raw_generate_date AS (
 
         {{ dbt_date.get_date_dimension("2000-01-01", "2025-08-31") }}
         
-)
+),
 
-, generate_date AS (
+generate_date AS (
 
     SELECT
 
@@ -27,9 +27,9 @@ WITH raw_generate_date AS (
 
     FROM raw_generate_date
 
-)
+),
 
-, final_date AS (
+final_date AS (
 
     SELECT
 

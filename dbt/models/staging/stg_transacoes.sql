@@ -9,7 +9,7 @@ transacoes as (
     SELECT
         CAST(cod_transacao AS int) AS transacao_id,
         CAST(num_conta AS int) AS conta_id,
-        CAST(data_transacao AS date) AS data_transacao,
+        CAST(data_transacao AS datetime) AS data_transacao,
         nome_transacao AS tipo_transacao,
         {{ reais_to_centavos('valor_transacao', 10000) }} AS valor_transacao_1e4
 

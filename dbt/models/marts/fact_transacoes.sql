@@ -4,6 +4,7 @@ WITH transacoes AS (
         transacao_id,
         conta_id,
         date_id,
+        data_transacao,
         tipo_transacao,
         valor_transacao
     

@@ -4,6 +4,7 @@ WITH transacoes AS (
         transacao_id,
         conta_id,
         date_id,
+        data_transacao,
         tipo_transacao,
         valor_transacao
     
@@ -72,6 +73,30 @@ dates AS (
 
 ),
 
+cotacao AS (
+
+    SELECT
+
+        date_id,
+        cotacao_compra,
+        cotacao_venda
+
+    FROM {{ ref('int_cotacao_dolar') }}
+
+),
+
+feriados AS (
+
+    SELECT
+
+        date_id,
+        nome_feriado,
+        tipo AS tipo_feriado
+
+    FROM {{ ref('int_feriados') }}
+
+),
+
 merged AS (
 
     SELECT
@@ -88,11 +113,11 @@ merged AS (
         dates.week_day,
         transacoes.tipo_transacao,
         transacoes.valor_transacao,
+        transacoes.data_transacao,
         contas.tipo_conta,
         contas.data_abertura AS conta_data_abertura,
         contas.saldo_total,
         contas.saldo_disponivel,
-        contas.data_ultimo_lancamento,
         clientes.nome_cliente,
         clientes.email,
         clientes.data_inclusao AS cliente_data_inclusao,
@@ -101,7 +126,10 @@ merged AS (
         colaborador_agencia.data_nascimento AS colaborador_data_nascimento,
         colaborador_agencia.nome_agencia,
         colaborador_agencia.cidade AS agencia_cidade,
-        colaborador_agencia.data_abertura AS agencia_data_abertura
+        cotacao.cotacao_compra,
+        cotacao.cotacao_venda,
+        feriados.nome_feriado,
+        feriados.tipo_feriado
 
     FROM transacoes
     LEFT JOIN contas ON transacoes.conta_id = contas.conta_id
@@ -109,6 +137,8 @@ merged AS (
     LEFT JOIN colaborador_agencia ON contas.colaborador_id = colaborador_agencia.colaborador_id 
                                   AND contas.agencia_id = colaborador_agencia.agencia_id
     LEFT JOIN dates ON transacoes.date_id = dates.date_id
+    LEFT JOIN cotacao ON transacoes.date_id = cotacao.date_id
+    LEFT JOIN feriados ON transacoes.date_id = feriados.date_id
 )
 
 SELECT * FROM merged

@@ -97,3 +97,37 @@ sources:
             description: FK to accounts.
             tests: 
               - not_null
+      - name: cotacao_USD
+        description: USD/BRL, buy and sell, daily quotes.
+        columns:
+          - name: data_e_hora_da_cotacao
+            description: Quote timestamp in UTC.
+            tests:
+              - not_null
+          - name: cotacao_compra
+            description: USD/BRL buy rate.
+            tests:
+              - not_null
+          - name: cotacao_venda
+            description: USD/BRL sell rate.
+            tests:
+              - not_null
+
+      - name: feriados_pontes_nacionais
+        description: National holidays and bridge days.
+        columns:
+          - name: date
+            description: Calendar date.
+            tests:
+              - not_null
+          - name: name
+            description: Name of the holiday or bridge.
+            tests:
+              - not_null
+          - name: type
+            description: Holiday type.
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['holiday', 'bridge']
+
