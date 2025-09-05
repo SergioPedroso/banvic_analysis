@@ -1,13 +1,21 @@
-WITH agencias AS (
+WITH rfm AS (
 
     SELECT
-        agencia_id,
-        nome,
-        cidade,
-        data_abertura
+        cliente_id,
+        nome_cliente,
+        nome_agencia,
+        recency_days,
+        frequency_orders,
+        monetary_value,
+        r_score,
+        f_score,
+        m_score,
+        rfm_segment
+
+    FROM rfm_scores
     
-    FROM {{ ref('stg_agencias') }}
+    FROM {{ ref('int_rfm') }}
   
 )
 
-SELECT * FROM agencias
+SELECT * FROM rfm

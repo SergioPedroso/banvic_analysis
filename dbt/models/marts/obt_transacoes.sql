@@ -132,13 +132,12 @@ merged AS (
         feriados.tipo_feriado
 
     FROM transacoes
-    LEFT JOIN contas ON transacoes.conta_id = contas.conta_id
-    LEFT JOIN clientes ON contas.cliente_id = clientes.cliente_id
-    LEFT JOIN colaborador_agencia ON contas.colaborador_id = colaborador_agencia.colaborador_id 
-                                  AND contas.agencia_id = colaborador_agencia.agencia_id
-    LEFT JOIN dates ON transacoes.date_id = dates.date_id
-    LEFT JOIN cotacao ON transacoes.date_id = cotacao.date_id
-    LEFT JOIN feriados ON transacoes.date_id = feriados.date_id
+    LEFT JOIN contas USING (conta_id)
+    LEFT JOIN clientes USING (cliente_id)
+    LEFT JOIN colaborador_agencia USING (colaborador_id, agencia_id)
+    LEFT JOIN dates USING (date_id)
+    LEFT JOIN cotacao USING (date_id) 
+    LEFT JOIN feriados USING (date_id)
 )
 
 SELECT * FROM merged
