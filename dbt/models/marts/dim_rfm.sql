@@ -11,8 +11,6 @@ WITH rfm AS (
         f_score,
         m_score,
         rfm_segment
-
-    FROM rfm_scores
     
     FROM {{ ref('int_rfm') }}
   
