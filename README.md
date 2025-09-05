@@ -4,10 +4,11 @@ Repositório com a arquitetura de dados no **dbt Cloud** e um **notebook de aná
 
 ## Estrutura
 - **dbt/models**: Modelos dbt (`staging`, `intermediate`, `mart`)
-- **eda.ipynb** → Análise exploratória em Python
+- **notebooks/eda.ipynb** → Análise exploratória em Python
 
 ## Arquitetura
 - Armazenamento e processamento no **BigQuery**
 - Transformações e testes no **dbt Cloud**
 - Visualização em **Looker Studio** (https://lookerstudio.google.com/embed/reporting/9d2df616-d331-4af2-bd82-a8374a2b5efd/page/rxdRF)
+
 
