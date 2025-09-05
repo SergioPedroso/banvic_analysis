@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: fct_rfm_clientes
+    description: RFM segmentation of clients, including recency, frequency, monetary metrics and derived segment classification.
+
+    columns:
+      - name: cliente_id
+        description: Unique identifier for the client.
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_cliente
+        description: Name of the client.
+        tests:
+          - not_null
+
+      - name: nome_agencia
+        description: Name of the agency associated with the client.
+        tests:
+          - not_null
+
+      - name: recency_days
+        description: Number of days since the last transaction of the client.
+        tests:
+          - not_null
+
+      - name: frequency_orders
+        description: Total number of transactions made by the client in the period.
+        tests:
+          - not_null
+
+      - name: monetary_value
+        description: Total monetary value of transactions for the client.
+        tests:
+          - not_null
+
+      - name: r_score
+        description: Recency score (1–5).
+        tests:
+          - not_null
+
+      - name: f_score
+        description: Frequency score (1–5).
+        tests:
+          - not_null
+
+      - name: m_score
+        description: Monetary score (1–5).
+        tests:
+          - not_null
+
+      - name: rfm_segment
+        description: Segment classification based on RFM scores.
+        tests:
+          - not_null

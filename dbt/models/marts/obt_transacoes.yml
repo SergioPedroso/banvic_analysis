@@ -45,6 +45,9 @@ models:
         description: Transaction amount in BRL.
         tests:
           - not_null
+      
+      - name: valor_transacao_abs
+        description: Absolute transaction amount in BRL.
 
       - name: tipo_conta
         description: Account type.

@@ -113,6 +113,7 @@ merged AS (
         dates.week_day,
         transacoes.tipo_transacao,
         transacoes.valor_transacao,
+        ABS(transacoes.valor_transacao) AS valor_transacao_abs,
         transacoes.data_transacao,
         contas.tipo_conta,
         contas.data_abertura AS conta_data_abertura,

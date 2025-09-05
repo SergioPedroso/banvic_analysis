@@ -3,7 +3,7 @@ WITH clientes AS (
     SELECT
         cliente_id, 
         nome_cliente
-        
+
     FROM {{ ref('stg_clientes') }}
 ),
 
@@ -114,15 +114,25 @@ rfm AS (
         r_score,
         f_score,
         m_score,
+        {# CASE
+            WHEN r_score >= 3 AND f_score >= 4 AND m_score >= 4 THEN 'Campeões'
+            WHEN r_score <= 2 AND f_score >= 4 AND m_score >= 4 THEN 'Não posso perdê-los'
+            WHEN r_score <= 2 AND f_score BETWEEN 2 AND 3 AND m_score BETWEEN 2 AND 3 THEN 'Em risco'
+            WHEN r_score >= 4 AND f_score BETWEEN 3 AND 4 AND m_score BETWEEN 3 AND 4 THEN 'Leais'
+            WHEN r_score = 5 AND f_score <= 2 AND m_score <= 2 THEN 'Promissores'
+            WHEN r_score BETWEEN 3 AND 4 AND f_score BETWEEN 2 AND 3 AND m_score BETWEEN 2 AND 3 THEN 'Precisam de Atenção'
+            WHEN r_score <= 2 AND f_score <= 2 AND m_score <= 2 THEN 'Perdidos'
+        ELSE 'Outros' #}
+
         CASE
-        WHEN r_score >= 3 AND f_score >= 4 AND m_score >= 4 THEN 'Campeões'
-        WHEN r_score <= 2 AND f_score >= 4 AND m_score >= 4 THEN 'Não posso perdê-los'
-        WHEN r_score <= 2 AND f_score BETWEEN 2 AND 3 AND m_score BETWEEN 2 AND 3 THEN 'Em risco'
-        WHEN r_score >= 4 AND f_score BETWEEN 3 AND 4 AND m_score BETWEEN 3 AND 4 THEN 'Leais'
-        WHEN r_score = 5 AND f_score <= 2 AND m_score <= 2 THEN 'Promissores'
-        WHEN r_score BETWEEN 3 AND 4 AND f_score BETWEEN 2 AND 3 AND m_score BETWEEN 2 AND 3 THEN 'Precisam de Atenção'
-        WHEN r_score <= 2 AND f_score <= 2 AND m_score <= 2 THEN 'Perdidos'
-        ELSE 'Outros'
+            WHEN r_score >= 4 AND f_score >= 4 AND m_score >= 4 THEN 'Campeões'
+            WHEN r_score >= 3 AND f_score >= 3 AND m_score >= 3 THEN 'Leais'
+            WHEN r_score = 5 AND f_score <= 2 AND m_score <= 2 THEN 'Promissores'
+            WHEN r_score <= 2 AND f_score >= 4 AND m_score >= 4 THEN 'Não posso perdê-los'
+            WHEN r_score <= 2 AND f_score BETWEEN 2 AND 3 AND m_score BETWEEN 2 AND 3 THEN 'Em risco'
+            WHEN r_score BETWEEN 3 AND 4 AND f_score BETWEEN 2 AND 3 AND m_score BETWEEN 2 AND 3 THEN 'Precisam de Atenção'
+            WHEN r_score <= 2 AND f_score <= 2 AND m_score <= 2 THEN 'Perdidos'
+        ELSE 'Regulares'
         END AS rfm_segment
 
     FROM rfm_scores
