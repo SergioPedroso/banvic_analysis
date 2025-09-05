@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: dim_feriados
+    description: This table contains holidays and bridge days for the calendar.
+
+    columns:
+      - name: date_id
+        description: Foreign key to dim_dates (YYYYMMDD).
+        tests:
+          - not_null
+
+      - name: nome_feriado
+        description: Holiday or bridge name.
+        tests:
+          - not_null
+
+      - name: tipo
+        description: Event type.
+        tests:
+          - not_null

@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: dim_colaborador_agencia
+    description: This table contains the relationship between employees and branches.
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [colaborador_id, agencia_id]
+
+    columns:
+      - name: colaborador_id
+        description: Employee identifier.
+        tests:
+          - not_null
+
+      - name: nome_colaborador
+        description: Employee full name.
+        tests:
+          - not_null
+
+      - name: data_nascimento
+        description: Employee date of birth.
+        tests:
+          - not_null
+
+      - name: agencia_id
+        description: Branch identifier.
+        tests:
+          - not_null
+
+      - name: nome_agencia
+        description: Branch name.
+        tests:
+          - not_null
+
+      - name: cidade
+        description: City where the branch is located.
+        tests:
+          - not_null
+
+      - name: data_abertura
+        description: Branch opening date.
+        tests:
+          - not_null

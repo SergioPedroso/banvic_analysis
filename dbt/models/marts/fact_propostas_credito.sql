@@ -6,15 +6,15 @@ WITH propostas AS (
         colaborador_id,
         data_entrada_proposta,
         taxa_juros_mensal,
-        {{ centavos_to_reais('valor_proposta_1e4', 10000, 4) }} AS valor_proposta,
-        {{ centavos_to_reais('valor_financiamento_1e4', 10000, 4) }} AS valor_financiamento,
-        {{ centavos_to_reais('valor_entrada_1e4', 10000, 4) }} AS valor_entrada,
-        {{ centavos_to_reais('valor_prestacao_1e4', 10000, 4) }} AS valor_prestacao,
+        valor_proposta,
+        valor_financiamento,
+        valor_entrada,
+        valor_prestacao,
         quantidade_parcelas,
         carencia,
         status_proposta
     
-    FROM {{ ref('stg_propostas_credito') }}
+    FROM {{ ref('int_propostas_credito') }}
   
 )
 

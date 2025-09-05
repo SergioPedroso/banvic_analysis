@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: dim_contas
+    description: This table contains information about customers' accounts.
+
+    columns:
+      - name: conta_id
+        description: Unique account identifier.
+        tests:
+          - unique
+          - not_null
+
+      - name: cliente_id
+        description: Foreign key to customer.
+        tests:
+          - not_null
+
+      - name: agencia_id
+        description: Foreign key to branch.
+        tests:
+          - not_null
+
+      - name: colaborador_id
+        description: Foreign key to employee.
+        tests:
+          - not_null
+
+      - name: tipo_conta
+        description: Account type.
+        tests:
+          - not_null
+
+      - name: data_abertura
+        description: Account opening date.
+        tests:
+          - not_null
+
+      - name: saldo_total
+        description: Total balance amount.
+        tests:
+          - not_null
+
+      - name: saldo_disponivel
+        description: Available balance amount.
+        tests:
+          - not_null
+
+      - name: data_ultimo_lancamento
+        description: Date of last posting.
+        tests:
+          - not_null

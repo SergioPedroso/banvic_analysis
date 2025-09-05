@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: bridge_colaborador_agencia
+    description: Bridge table for conection between dim_agencias and dim_colaborador.
+
+    columns:
+      - name: colaborador_id
+        description: Identifier for the employee.
+        tests:
+          - not_null
+          - unique
+
+      - name: agencia_id
+        description: Identifier for the branch.
+        tests:
+          - not_null
+

@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: dim_clientes
+    description: This table contains customers' information.
+
+    columns:
+      - name: cliente_id
+        description: Unique customer identifier.
+        tests:
+          - unique
+          - not_null
+
+      - name: nome_cliente
+        description: Customer full name.
+        tests:
+          - not_null
+
+      - name: email
+        description: Customer email address.
+        tests:
+          - not_null
+
+      - name: tipo_cliente
+        description: Customer type or segment.
+        tests:
+          - not_null
+
+      - name: data_inclusao
+        description: Customer inclusion date in the system.
+        tests:
+          - not_null
+
+      - name: data_nascimento
+        description: Customer date of birth.
+        tests:
+          - not_null

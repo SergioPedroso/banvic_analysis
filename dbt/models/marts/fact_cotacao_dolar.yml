@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: fct_cotacao_dolar
+    description: Daily USD/BRL exchange rates aggregated by date.
+
+    columns:
+      - name: date_id
+        description: Foreign key to dim_dates (YYYYMMDD).
+        tests:
+          - unique
+          - not_null
+
+      - name: cotacao_compra
+        description: USD/BRL buy rate.
+        tests:
+          - not_null
+
+      - name: cotacao_venda
+        description: USD/BRL sell rate.
+        tests:
+          - not_null
